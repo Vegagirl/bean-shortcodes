@@ -182,11 +182,21 @@ if(!function_exists('bean_clear')) {
 if (!function_exists('bean_toggle')) {
 	function bean_toggle( $atts, $content = null ) {
 	    extract(shortcode_atts(array(
-			'title'    	 => 'Title goes here',
-			'state'		 => 'open'
+			'title'    	 => 'Collapsibile Toggle Title',
+			'state'		 => 'in'
 	    ), $atts));
-
-		return "<div data-id='".$state."' class=\"bean-toggle\"><span class=\"bean-toggle-title\">". $title ."</span><div class=\"bean-toggle-inner\"><div class=\"target\">". do_shortcode( $content ) ."</div></div></div>";
+	    
+	    $id = str_replace(' ', '', $title);
+	    
+		return "
+		<div class='bean-panel'>
+			<div class='bean-panel-heading'>
+			<p class='bean-panel-title'><a data-toggle='collapse' data-parent='#accordion' href='#".$id."'>". $title ."</a></p>
+			</div>
+			<div id='".$id."' class='bean-panel-collapse collapse ".$state."'>
+				<div class='bean-panel-body'>". do_shortcode( $content ) ."</div>
+			</div>
+		</div>";
 	}
 	add_shortcode('toggle', 'bean_toggle');
 }
@@ -208,16 +218,25 @@ if (!function_exists('bean_tabs')) {
 		$output = '';
 
 		if( count($tab_titles) ){
-		    $output .= '<div id="bean-tabs-'. rand(1, 100) .'" class="bean-tabs clearfix"><div class="bean-tab-inner">';
-			$output .= '<ul class="bean-nav clearfix">';
+			
+			$output .= '<ul class="nav bean-tabs">';
 
 			foreach( $tab_titles as $tab ){
-				$output .= '<li><a href="#bean-tab-'. sanitize_title( $tab[0] ) .'">' . $tab[0] . '</a></li>';
+				$output .= '<li><a href="#tab-'. sanitize_title( $tab[0] ) .'" data-toggle="tab">' . $tab[0] . '</a></li>';
 			}
-
 		    $output .= '</ul>';
+		    
+		    $output .= '<div class="bean-tab-content">';
 		    $output .= do_shortcode( $content);
-		    $output .= '</div></div>';
+		    $output .= '</div>';
+		    
+			$output .= '<script type="text/javascript">';
+			$output .= 'jQuery(document).ready(function($) {';
+			$output .= '$(".bean-tab-content .bean-tab-pane:first-of-type").addClass("active");';
+			$output .= '$(".nav.bean-tabs li:first-child").addClass("active");';
+			$output .= '});';
+			$output .= '</script>';
+			
 		} else {
 			$output .= do_shortcode( $content );
 		}
@@ -235,10 +254,12 @@ if (!function_exists('bean_tab')) {
 		$defaults = array( 'title' => 'Tab' );
 		extract( shortcode_atts( $defaults, $atts ) );
 
-		return '<div id="bean-tab-'. sanitize_title( $title ) .'" class="bean-tab">'. do_shortcode( $content ) .'</div>';
+		return '<div id="tab-'. sanitize_title( $title ) .'" class="bean-tab-pane fade in">'. do_shortcode( $content ) .'</div>';
 	}
 	add_shortcode( 'tab', 'bean_tab' );
 }
+
+
 
 
 /*=================================*/
@@ -262,8 +283,8 @@ if (!function_exists('bean_alert')) {
 	   	}
 	   	if ($icon) $class .= ' icon';
 
-	   	$box = '<div class="'.$class.'"><span class="alert-close"></span>';
-	   	$box .= '<span>'.do_shortcode( $content ).'</span>';
+	   	$box = '<div class="'.$class.'">';
+	   	$box .= do_shortcode( $content );
 	   	$box .= '</div>';
 
 	      return $box;
@@ -287,43 +308,21 @@ if(!function_exists('bean_highlight_sc')) {
 
 
 /*=================================*/
-/* NOTE 
+/* TOOLTIP 
 /*=================================*/
-if(!function_exists('bean_note_sc')) {
-	function bean_note_sc ( $atts, $content = null ) {
-		$defaults = array();
-		extract( shortcode_atts( $defaults, $atts ) );
-		return '<div class="bean-note">' . $content . '</div>';
+if (!function_exists('bean_tooltip_sc')) {
+	function bean_tooltip_sc( $atts, $content = null ) {
+	    extract(shortcode_atts(array(
+			'title'    	 => 'Collapsibile Toggle Title',
+			'placement'		 => 'top',
+			'link'		 => '#'
+	    ), $atts));
+		
+		if ($placement) $placement = 'data-placement="'.$placement.'"';
+	    
+		return '<a href="'.$link.'" data-toggle="tooltip" title="" '.$placement.' data-original-title="'.$content.'">'.$title.'</a>';
 	}
-	add_shortcode( 'note', 'bean_note_sc' );
-}
-
-
-/*=================================*/
-/* PRETTYPRINT 
-/*=================================*/
-if(!function_exists('bean_pre_sc')) {
-	function bean_pre_sc ( $atts, $content = null ) {
-		$defaults = array();
-		extract( shortcode_atts( $defaults, $atts ) );
-		return '<pre class="prettyprint">' . $content . '</pre>';
-	}
-	add_shortcode( 'pre', 'bean_pre_sc' );
-}
-
-
-/*=================================*/
-/* LISTS 
-/*=================================*/
-if (!function_exists('bean_lists_sc')) {
-	function bean_lists_sc($atts, $content = null) {
-		extract( shortcode_atts( array(
-			'style' => ''
-		), $atts ) );
-	     $content = do_shortcode( $content );
-		return '<div class="shortcode-list">'.$content.'</div>';
-	}
-	add_shortcode("list", "bean_lists_sc");
+	add_shortcode('tooltip', 'bean_tooltip_sc');
 }
 
 
@@ -355,41 +354,13 @@ if (!function_exists('bean_button_sc')) {
 
 		// ICONS
 		if ($icon !="") { $icon_type = ( $icon ) ? '<i class="icon-'.$icon.'"></i>': '' ; }
-		else {}
+		else { $icon_type = ''; }
 		// BUTTON OUTPUT
-		$button = '<a href=" '.$url.' " class="short-btn '.$color.' '.$size.' '.$type.' " '.$target.'> '.$icon_type.' '.do_shortcode($content).' </a>';
+		$button = '<a href=" '.$url.' " class="bean-btn '.$color.' '.$size.' '.$type.' " '.$target.'> '.$icon_type.' '.do_shortcode($content).' </a>';
 
 	    return $button;
 	}
 	add_shortcode('button', 'bean_button_sc');
-}
-
-
-/*=================================*/
-/* FEATURE AREAS 
-/*=================================*/
-if (!function_exists('bean_icon_box_sc')) {
-
-	function bean_icon_box_sc($atts, $content=null ) {	
-		extract(shortcode_atts(array(
-			'title' => '', 
-			'icon' => ''
-			), $atts));
-		
-		if($icon != "") $icon = "<span class='icon $icon'></span>";
-		
-		// add blockquotes to the content
-		$output  = '<div class="featurearea">';
-		$output .= '<span class="featurearea_icon">'.$icon.'</span>';
-		$output .= '<div class="featurearea_content">';
-		$output .= '<h5 class="featurearea_content_title">'.$title."</h5>";
-		$output .= wpautop( $content );
-		$output .= '</div></div>';
-		
-		return $output;
-	}
-	add_shortcode('featurearea', 'bean_icon_box_sc');
-
 }
 
 
@@ -403,42 +374,5 @@ if(!function_exists('bean_quote_sc')) {
 		return '<div class="bean-quote">' . $content . '</div>';
 	}
 	add_shortcode( 'quote', 'bean_quote_sc' );
-}
-
-
-/*=================================*/
-/* POPUP 
-/*=================================*/
-if (!function_exists('bean_popup_sc')) {
-	function bean_popup_sc( $atts, $content = null ) {
-		extract( shortcode_atts( array(
-			'heading' 	=> '',
-			'popup_link' 	=> null,
-			'type' 			=> null,
-			'class' 		=> null,
-			'height' 		=> 500,
-			'width' 		=> 400,
-			'href' 			=> null,
-			'state'			=> 'closed',
-		), $atts ) );
-
-		$id = rand(1, 10000);
-
-		if ($content) $output ='
-
-		<!-- modal content -->
-		<div id="bean-modal-'. $id  .'" class="modal hide fade.in animated BeanModalBounceIn '.$class.'">
-			<div class="modal-header">
-				<a href="#" class="close" data-dismiss="modal">×</a>
-				<h1>'. $heading .'</h1>
-			</div>
-			<div class="modal-body">'. do_shortcode( $content ) .'</div>
-		</div>
-
-		<p><a data-toggle="modal" href="#bean-modal-'.$id .'" class="modal-popup-link '.$class.'">'.$popup_link.'</a></p>';
-
-		return $output;
-	}
-	add_shortcode('popup', 'bean_popup_sc');
 }
 ?>
