@@ -384,4 +384,32 @@ if(!function_exists('bean_quote_sc')) {
 	}
 	add_shortcode( 'quote', 'bean_quote_sc' );
 }
+
+
+/*=================================*/
+/* NOTE 
+/*=================================*/
+if(!function_exists('bean_note_sc')) {
+	function bean_note_sc ( $atts, $content = null ) {
+		$defaults = array();
+		extract( shortcode_atts( $defaults, $atts ) );
+		return '<div class="bean-note">' . $content . '</div>';
+	}
+	add_shortcode( 'note', 'bean_note_sc' );
+}
+
+
+/*=================================*/
+/* LISTS 
+/*=================================*/
+if (!function_exists('bean_lists_sc')) {
+	function bean_lists_sc($atts, $content = null) {
+		extract( shortcode_atts( array(
+			'style' => ''
+		), $atts ) );
+	     $content = do_shortcode( $content );
+		return '<div class="shortcode-list">'.$content.'</div>';
+	}
+	add_shortcode("list", "bean_lists_sc");
+}
 ?>
