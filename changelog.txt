@@ -1,6 +1,6 @@
 Mar 26 2013 - Version 2.1
 <ul>
-<li>CAdded list/note fallback for old themes</li>
+<li>Added list/note fallback for old themes</li>
 <li>Button border fix</li>
 </ul>
 
