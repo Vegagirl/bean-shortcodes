@@ -1,4 +1,10 @@
-FEB 12 2013 - Version 2.0
+Mar 26 2013 - Version 2.1
+<ul>
+<li>CAdded list/note fallback for old themes</li>
+<li>Button border fix</li>
+</ul>
+
+Feb 12 2013 - Version 2.0
 <ul>
 <li>Initial 2.0 Release</li>
 <li>Cleaned house with refined styles</li>

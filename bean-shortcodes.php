@@ -60,7 +60,7 @@ function edd_beanshortcodes_plugin_updater()
 	$license_key = trim( get_option( 'edd_beanshortcodes_activate_license' ) );
 
 	$edd_updater = new EDD_SL_Plugin_Updater( EDD_BEANSHORTCODES_TB_URL, __FILE__, array( 
-			'version' 	=> '2.0',
+			'version' 	=> '2.1',
 			'license' 	=> $license_key,
 			'item_name' => EDD_BEANSHORTCODES_NAME,
 			'author' 	=> 'Rich Tabor / ThemeBeans'
