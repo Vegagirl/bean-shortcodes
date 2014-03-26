@@ -1,4 +1,15 @@
 <?php
+/**
+ * This file sets up the shortcodes.
+ *
+ *
+ * @package Bean Plugins
+ * @subpackage BeanShortcodes
+ * @author ThemeBeans
+ * @since BeanShortcodes 2.0
+ */
+ 
+ 
 /*=================================*/
 /* TEXT WIDGET FILTERS
 /*=================================*/
@@ -258,8 +269,6 @@ if (!function_exists('bean_tab')) {
 	}
 	add_shortcode( 'tab', 'bean_tab' );
 }
-
-
 
 
 /*=================================*/

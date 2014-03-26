@@ -1,0 +1,6 @@
+FEB 12 2013 - Version 2.0
+<ul>
+<li>Initial 2.0 Release</li>
+<li>Cleaned house with refined styles</li>
+<li>Support for auto activation</li>
+</ul>

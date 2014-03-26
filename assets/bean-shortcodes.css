@@ -89,6 +89,18 @@
 	top: 1px!important;
 }
 
+.entry-content a.bean-btn,
+.entry-content p a.bean-btn,
+.entry-content a.bean-btn:hover,
+.entry-content p a.bean-btn:hover {
+	color: #FFF!important;
+}
+
+#primary-container .entry-content p a.bean-btn:hover {
+	color: #FFF!important;
+}
+
+
 /* BUTTON COLORS */
 .bean-btn.yellow { background: #FCC71F; border-color: #F5C017;  }
 .bean-btn.yellow:hover { background: #FFCF38; border-color: #FFCF38;  } 
@@ -292,7 +304,6 @@ and (max-width : 400px) {
 	background: #FFF;
 	border: 1px solid #D3D3D3;
 	display: block;
-
 	cursor: pointer;
 	outline: none;
 	position: relative;
@@ -304,9 +315,15 @@ and (max-width : 400px) {
 }
 
 .bean-panel-title > a {
+	border: none!important;
 	color: inherit;
 	display: block;
-	padding: 10px 15px; 
+	padding: 10px 15px!important; 
+	text-decoration: none!important;
+}
+
+.bean-panel-title > a:active {
+	top: 0!important;
 }
 
 .bean-panel-body {
@@ -469,7 +486,6 @@ and (max-width : 400px) {
 	background-color: #888;
 	border-radius: 2px;
 	color: #FFF;
-	font: 15px/22px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif!important;
 	margin: 30px 0;
 	padding: 20px 20px;
 	position: relative;   

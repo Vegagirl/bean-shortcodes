@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: Bean Shortcodes 2.0
+ * Plugin Name: Bean Shortcodes
  * Plugin URI: http://themebeans.com/plugin/bean-shortcodes-plugin
  * Description: Enables shortcodes to be used in Bean WordPress Themes
  * Version: 2.0
  * Author: Rich Tabor / ThemeBeans
- * Author URI: http://www.themebeans.com
+ * Author URI: http://themebeans.com
  *
  *
  * @package Bean Plugins
@@ -27,6 +27,71 @@ if ( !function_exists( 'add_action' ) )
 
 
 
+/*===================================================================*/
+/*
+/* PLUGIN UPDATER FUNCTIONALITY
+/*
+/*===================================================================*/
+define( 'EDD_BEANSHORTCODES_TB_URL', 'http://themebeans.com' );
+define( 'EDD_BEANSHORTCODES_NAME', 'Bean Shortcodes' );
+
+//LOAD UPDATER CLASS
+if( !class_exists( 'EDD_SL_Plugin_Updater' ) ) 
+{
+	include( dirname( __FILE__ ) . '/updates/EDD_SL_Plugin_Updater.php' );
+}
+//INCLUDE UPDATER SETUP
+include( dirname( __FILE__ ) . '/updates/EDD_SL_Activation.php' );
+
+
+/*===================================================================*/
+/* UPDATER SETUP
+/*===================================================================*/
+function beanshortcodes_license_setup() 
+{
+	add_option( 'edd_beanshortcodes_activate_license', 'BEANSHORTCODES' );
+	add_option( 'edd_beanshortcodes_license_status' );
+}
+add_action( 'init', 'beanshortcodes_license_setup' );
+
+function edd_beanshortcodes_plugin_updater() 
+{
+	//RETRIEVE LICENSE KEY
+	$license_key = trim( get_option( 'edd_beanshortcodes_activate_license' ) );
+
+	$edd_updater = new EDD_SL_Plugin_Updater( EDD_BEANSHORTCODES_TB_URL, __FILE__, array( 
+			'version' 	=> '2.0',
+			'license' 	=> $license_key,
+			'item_name' => EDD_BEANSHORTCODES_NAME,
+			'author' 	=> 'Rich Tabor / ThemeBeans'
+		)
+	);
+}
+add_action( 'admin_init', 'edd_beanshortcodes_plugin_updater' );
+
+
+/*===================================================================*/
+/* DEACTIVATION HOOK - REMOVE OPTION
+/*===================================================================*/
+function beanshortcodes_deactivate() 
+{
+	delete_option( 'edd_beanshortcodes_activate_license' );
+	delete_option( 'edd_beanshortcodes_license_status' );
+}
+register_deactivation_hook( __FILE__, 'beanshortcodes_deactivate' );
+
+
+
+
+
+
+
+
+/*===================================================================*/
+/*
+/* BEGIN BEAN SHORTCODES PLUGIN
+/*
+/*===================================================================*/
 /*===================================================================*/
 /* BEGIN CLASS
 /*===================================================================*/	 
@@ -60,7 +125,7 @@ if ( !class_exists( 'Bean_BeanShortcodes' ) ) {
 	
 			//ENQUEUE
 			wp_enqueue_script('bean-shortcodes', $js_url, 'jquery', '1.0', true);
-			wp_enqueue_style( 'bean-shortcodes-css', $css_url, false, '1.0', 'all' );
+			wp_enqueue_style( 'bean-shortcodes', $css_url, false, '1.0', 'all' );
 		}
 	
 	
