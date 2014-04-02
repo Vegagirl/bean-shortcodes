@@ -1,3 +1,8 @@
+Apr 3 2013 - Version 2.1.1
+<ul>
+<li>Conditionally load scripts/styles</li>
+</ul>
+
 Mar 26 2013 - Version 2.1
 <ul>
 <li>Added list/note fallback for old themes</li>

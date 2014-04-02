@@ -3,7 +3,7 @@
  * Plugin Name: Bean Shortcodes
  * Plugin URI: http://themebeans.com/plugin/bean-shortcodes-plugin
  * Description: Enables shortcodes to be used in Bean WordPress Themes
- * Version: 2.1
+ * Version: 2.1.1
  * Author: Rich Tabor / ThemeBeans
  * Author URI: http://themebeans.com
  *
@@ -60,10 +60,10 @@ function edd_beanshortcodes_plugin_updater()
 	$license_key = trim( get_option( 'edd_beanshortcodes_activate_license' ) );
 
 	$edd_updater = new EDD_SL_Plugin_Updater( EDD_BEANSHORTCODES_TB_URL, __FILE__, array( 
-			'version' 	=> '2.1',
+			'version' 	=> '2.1.1',
 			'license' 	=> $license_key,
-			'item_name' => EDD_BEANSHORTCODES_NAME,
-			'author' 	=> 'Rich Tabor / ThemeBeans'
+			'item_name'    => EDD_BEANSHORTCODES_NAME,
+			'author' 	     => 'Rich Tabor / ThemeBeans'
 		)
 	);
 }
