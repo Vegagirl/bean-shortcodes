@@ -197,7 +197,8 @@ if (!function_exists('bean_toggle')) {
 			'state'		 => 'in'
 	    ), $atts));
 	    
-	    $id = str_replace(' ', '', $title);
+	     //$id = str_replace(‘ ‘, ‘’, $title);
+		$id = preg_replace('/[^a-zA-Z]+/', '', $title);
 	    
 		return "
 		<div class='bean-panel'>
