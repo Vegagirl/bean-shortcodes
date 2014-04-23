@@ -30,14 +30,15 @@ if ( !function_exists( 'add_action' ) )
 /* PLUGIN FEATURES SETUP
 /*
 /*===================================================================*/
-
 $bean_plugin_features[ plugin_basename( __FILE__ ) ] = array(
-        "updates"       => true    // Whether to utilize plugin updates feature or not
+        "updates"       => false // Whether to utilize plugin updates feature or not
     );
 
 
-if ( ! function_exists( 'bean_plugin_supports' ) ) {
-    function bean_plugin_supports( $plugin_basename, $feature ) {
+if ( ! function_exists( 'bean_plugin_supports' ) ) 
+{
+    function bean_plugin_supports( $plugin_basename, $feature ) 
+    {
         global $bean_plugin_features;
 
         $setup = $bean_plugin_features;
@@ -91,7 +92,7 @@ function edd_beanshortcodes_plugin_updater()
 	$license_key = trim( get_option( 'edd_beanshortcodes_activate_license' ) );
 
 	$edd_updater = new EDD_SL_Plugin_Updater( EDD_BEANSHORTCODES_TB_URL, __FILE__, array( 
-			'version' 	=> '2.1.1',
+			'version' 	=> '2.2',
 			'license' 	=> $license_key,
 			'item_name'    => EDD_BEANSHORTCODES_NAME,
 			'author' 	     => 'Rich Tabor / ThemeBeans'
