@@ -12,12 +12,12 @@
 		},
 
 		createControl: function ( btn, e ) {
-			if ( btn == "bean_button" ) {	
+			if ( btn == "bean_shortcodes_button" ) {	
 				
 				var a = this;
 				
 				//CREATE THE BUTTON
-				var btn = e.createSplitButton('bean_button', {
+				var btn = e.createSplitButton('bean_shortcodes_button', {
                     title: "Insert Bean Shortcode", //BUTTON TITLE
 					icons: false
                 });

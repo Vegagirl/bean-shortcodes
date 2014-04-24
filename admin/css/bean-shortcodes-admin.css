@@ -1,31 +1,18 @@
 /*===================================================================*/
 /*  SHORTCODE BUTTON
 /*===================================================================*/
-.wp_themeSkin .mceMenu a {
-	cursor: pointer!important;
-}
 
-.wp_themeSkin .mceMenu .mceText {
-	cursor: pointer!important;
-	padding: 0 12px!important;
-}
-
-span.mce_bean_button {
+i.mce-i-bean_shortcodes_button, span.mce_bean_shortcodes_button {
     background-image: url(../images/icon.png)!important;
-}
-
-.mceSplitButtonSelected span.mce_bean_button,
-.mce_bean_button:hover span.mce_bean_button {
-    background-position: 0px -20px;
 }
 
 @media print,
   (-o-min-device-pixel-ratio: 5/4),
   (-webkit-min-device-pixel-ratio: 1.25),
   (min-resolution: 120dpi) {
-    span.mce_bean_button {
+    i.mce-i-bean_shortcodes_button, span.mce_bean_shortcodes_button {
         background-image: url(../images/icon@2x.png)!important;
-        background-size: 20px 40px;
+        background-size: 20px 20px;
     }
 }
 

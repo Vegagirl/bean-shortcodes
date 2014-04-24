@@ -257,7 +257,12 @@ if ( !class_exists( 'Bean_BeanShortcodes' ) ) {
 		/*===================================================================*/	 
 		function add_rich_plugins( $plugin_array ) 
 		{
-			$plugin_array['BeanShortcodes'] = BEAN_SC_ADMIN_URI . '/plugin.js';
+            if ( version_compare( get_bloginfo('version'), '3.9', '>=' ) ) {
+    			$plugin_array['BeanShortcodes'] = BEAN_SC_ADMIN_URI . '/plugin.js';
+            } else {
+                $plugin_array['BeanShortcodes'] = BEAN_SC_ADMIN_URI . '/plugin-pre3.9.js';
+            }
+
 			return $plugin_array;
 		}
 	
@@ -269,7 +274,7 @@ if ( !class_exists( 'Bean_BeanShortcodes' ) ) {
 		/*===================================================================*/	 
 		function register_rich_buttons( $buttons ) {
 	
-			array_push( $buttons, "|", 'bean_button' );
+			array_push( $buttons, "|", 'bean_shortcodes_button' );
 	
 			return $buttons;
 		}
