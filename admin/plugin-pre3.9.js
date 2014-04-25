@@ -18,7 +18,7 @@
 				
 				//CREATE THE BUTTON
 				var btn = e.createSplitButton('bean_shortcodes_button', {
-                    title: "Insert Bean Shortcode", //BUTTON TITLE
+                    title: "Bean Shortcodes", //BUTTON TITLE
 					icons: false
                 });
 				
