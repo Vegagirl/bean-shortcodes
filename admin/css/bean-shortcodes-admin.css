@@ -40,11 +40,11 @@ i.mce-i-bean_shortcodes_button, span.mce_bean_shortcodes_button {
 }
 
 #TB_ajaxWindowTitle {
-	padding: 2px 12px;
+	padding: 3px 19px;
 }
 
 .tb-close-icon {
-	margin: -5px 0px 0 0;
+	margin: 4px 0 0 0;
 }
 
 
@@ -203,6 +203,6 @@ i.mce-i-bean_shortcodes_button, span.mce_bean_shortcodes_button {
 	background: #F5F5F5;
 	border-top: 1px solid #DDD;
 	margin: 0px -15px;
-	padding: 15px;
+	padding: 14px 18px 13px 15px;
 	text-align: right;
 }

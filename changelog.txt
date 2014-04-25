@@ -1,12 +1,9 @@
-Apr 22 2013 - Version 2.2
+Apr 24 2013 - Version 2.2
 <ul>
+<li>WP 3.9 TinyMCE editor fix</li>
 <li>Added option to disable updates</li>
-<li>Special characters in toggle fix</li>
-</ul>
-
-Apr 3 2013 - Version 2.1.1
-<ul>
 <li>Conditionally load scripts/styles</li>
+<li>Special characters in toggle fix</li>
 </ul>
 
 Mar 26 2013 - Version 2.1

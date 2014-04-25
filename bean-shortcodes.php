@@ -3,8 +3,8 @@
  * Plugin Name: Bean Shortcodes
  * Plugin URI: http://themebeans.com/plugin/bean-shortcodes-plugin
  * Description: Enables shortcodes to be used in Bean WordPress Themes
- * Version: 2.1.1
- * Author: Rich Tabor / ThemeBeans
+ * Version: 2.2
+ * Author: ThemeBeans
  * Author URI: http://themebeans.com
  *
  *
@@ -31,7 +31,7 @@ if ( !function_exists( 'add_action' ) )
 /*
 /*===================================================================*/
 $bean_plugin_features[ plugin_basename( __FILE__ ) ] = array(
-        "updates"       => false // Whether to utilize plugin updates feature or not
+        "updates"  => false // Whether to utilize plugin updates feature or not
     );
 
 
@@ -188,32 +188,36 @@ if ( !class_exists( 'Bean_BeanShortcodes' ) ) {
 		/*===================================================================*/	 
 		function action_frontend_scripts() 
 		{
-			//VARIABLES
-			$js_url = plugin_dir_url(__FILE__) . 'assets/js/bean-shortcodes.min.js';
-			$css_url = plugin_dir_url(__FILE__) . 'assets/bean-shortcodes.css';
+          //VARIABLES
+          $js_url = plugin_dir_url(__FILE__) . 'assets/js/bean-shortcodes.min.js';
+          $css_url = plugin_dir_url(__FILE__) . 'assets/bean-shortcodes.css';
 
-            global $post;
-	
-			/*
-             * Conditionally check if the post content contains any of the shortcodes in which case load enqueue the scripts/styles
-             * 
-             * A much much better way could have been to keep a flag that defaults to 0. Whenever any of the shortcode callback 
-             * functions is called, it sets the flag to 1. Then, in the wp_footer, we can decide whether to load the scripts or not.
-             *
-             * The reason why that method is not used is to avoid loading css in body.
-             *
-             */ 
+          global $post;
 
-            foreach($this->all_shortcodes as $shortcode) {
-                if (strpos($post->post_content, $shortcode) !== FALSE) {
-        			wp_enqueue_script('bean-shortcodes', $js_url, 'jquery', '1.0', true);
-        			wp_enqueue_style( 'bean-shortcodes', $css_url, false, '1.0', 'all' );
+          /*
+          * Conditionally check if the post content contains any of the shortcodes in which case load enqueue the scripts/styles
+          * 
+          * A much much better way could have been to keep a flag that defaults to 0. Whenever any of the shortcode callback 
+          * functions is called, it sets the flag to 1. Then, in the wp_footer, we can decide whether to load the scripts or not.
+          *
+          * The reason why that method is not used is to avoid loading css in body.
+          *
+          */ 
 
-                    break;
-                }
-            }
-		}
-	
+          wp_enqueue_script('bean-shortcodes', $js_url, 'jquery', '1.0', true);
+          wp_enqueue_style( 'bean-shortcodes', $css_url, false, '1.0', 'all' );
+
+          foreach($this->all_shortcodes as $shortcode) 
+          {
+               if (strpos($post->post_content, $shortcode) !== FALSE) 
+               {
+               	wp_enqueue_script('bean-shortcodes', $js_url, 'jquery', '1.0', true);
+               	wp_enqueue_style( 'bean-shortcodes', $css_url, false, '1.0', 'all' );
+               break;
+               }
+          }
+          }
+
 	
 	
 	
