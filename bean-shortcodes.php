@@ -207,15 +207,15 @@ if ( !class_exists( 'Bean_BeanShortcodes' ) ) {
           wp_enqueue_script('bean-shortcodes', $js_url, 'jquery', '1.0', true);
           wp_enqueue_style( 'bean-shortcodes', $css_url, false, '1.0', 'all' );
 
-          foreach($this->all_shortcodes as $shortcode) 
-          {
-               if (strpos($post->post_content, $shortcode) !== FALSE) 
-               {
-               	wp_enqueue_script('bean-shortcodes', $js_url, 'jquery', '1.0', true);
-               	wp_enqueue_style( 'bean-shortcodes', $css_url, false, '1.0', 'all' );
-               break;
-               }
-          }
+          // foreach($this->all_shortcodes as $shortcode) 
+          // {
+          //      if (strpos($post->post_content, $shortcode) !== FALSE) 
+          //      {
+          //      	wp_enqueue_script('bean-shortcodes', $js_url, 'jquery', '1.0', true);
+          //      	wp_enqueue_style( 'bean-shortcodes', $css_url, false, '1.0', 'all' );
+          //      break;
+          //      }
+          // }
           }
 
 	
