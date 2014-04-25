@@ -139,8 +139,20 @@ jQuery(document).ready(function($) {
     		$('.bean-insert', form).click(function() {    		 			
     			if(window.tinyMCE)
 				{
-					window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, $('#_bean_ushortcode', form).html());
-					tb_remove();
+					console.log($('#_bean_ushortcode', form));
+
+                    if (typeof window.tinyMCE.activeEditor != 'undefined') {
+                        window.tinyMCE.activeEditor.selection.moveToBookmark(window.tinymce_cursor);
+                    }
+                    if (typeof window.tinyMCE.execInstanceCommand != 'undefined') {
+                        window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, $('#_bean_ushortcode', form).html());
+                    } else {
+                        if (typeof window.tinyMCE.execCommand != 'undefined') {
+                            window.tinyMCE.get('content').execCommand('mceInsertContent', false, $('#_bean_ushortcode', form).html());
+                        }
+                    }
+
+                    tb_remove();
 				}
     		});
     	}
