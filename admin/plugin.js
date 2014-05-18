@@ -6,7 +6,7 @@
 
         //CREATE THE BUTTON
         var btn = editor.addButton('bean_shortcodes_button', {
-            type: "splitbutton",
+            type: "menubutton",
             title: "Bean Shortcodes", //BUTTON TITLE
             menu: [
                  createSubmenuButtonWithPopup( "Alerts", "alert" ),

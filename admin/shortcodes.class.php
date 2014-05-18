@@ -142,6 +142,28 @@ class bean_shortcodes
 						$this->append_output( $output );
 						
 						break;
+
+					case 'icon-select' :
+
+						// prepare
+						$output  = $row_start;
+						$output .= '<ul class="bean-form-icon-select">' . "\n";
+						
+						foreach( $param['options'] as $value => $option )
+						{
+							$output .= '<li data-val="' . $value . '"><i class="icon-' . $value . '"></i></li>' . "\n";
+						}
+						
+						$output .= '</ul>' . "\n";
+
+						$output .= '<input id="' . $pkey . '" class="icon-select-input bean-input" type="hidden" name="' . $pkey . '" value="">';
+
+						$output .= $row_end;
+						
+						// append
+						$this->append_output( $output );
+
+						break;
 				}
 			}
 			
@@ -243,6 +265,28 @@ class bean_shortcodes
 							// append
 							$this->append_output( $coutput );
 							
+							break;
+
+						case 'icon-select' :
+
+							// prepare
+							$coutput  = $crow_start;
+							$coutput .= '<ul class="bean-form-icon-select">' . "\n";
+							
+							foreach( $cparam['options'] as $value => $option )
+							{
+								$coutput .= '<li data-val="' . $value . '"><i class="icon-' . $value . '"></i></li>' . "\n";
+							}
+							
+							$coutput .= '</ul>' . "\n";
+
+							$coutput .= '<input id="' . $cpkey . '" class="icon-select-input bean-input" type="hidden" name="' . $cpkey . '" value="">';
+
+							$coutput .= $crow_end;
+							
+							// append
+							$this->append_output( $coutput );
+
 							break;
 					}
 				}

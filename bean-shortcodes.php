@@ -191,6 +191,7 @@ if ( !class_exists( 'Bean_BeanShortcodes' ) ) {
           //VARIABLES
           $js_url = plugin_dir_url(__FILE__) . 'assets/js/bean-shortcodes.min.js';
           $css_url = plugin_dir_url(__FILE__) . 'assets/bean-shortcodes.css';
+          $font_awesome_css_url = plugin_dir_url(__FILE__) . 'assets/font-awesome.css';
 
           global $post;
 
@@ -206,6 +207,7 @@ if ( !class_exists( 'Bean_BeanShortcodes' ) ) {
 
           wp_enqueue_script('bean-shortcodes', $js_url, 'jquery', '1.0', true);
           wp_enqueue_style( 'bean-shortcodes', $css_url, false, '1.0', 'all' );
+          wp_enqueue_style( 'font-awesome', $font_awesome_css_url, false, '1.0', 'all' );
 
           // foreach($this->all_shortcodes as $shortcode) 
           // {
@@ -227,7 +229,8 @@ if ( !class_exists( 'Bean_BeanShortcodes' ) ) {
 		function action_admin_scripts_init() 
 		{
 			//CSS
-			wp_enqueue_style( 'bean-shortcodes-admin', BEAN_SC_ADMIN_URI . '/css/bean-shortcodes-admin.css', false, '1.0', 'all' );
+            wp_enqueue_style( 'bean-shortcodes-admin', BEAN_SC_ADMIN_URI . '/css/bean-shortcodes-admin.css', false, '1.0', 'all' );
+			wp_enqueue_style( 'font-awesome', plugin_dir_url(__FILE__) . 'assets/font-awesome.css', false, '1.0', 'all' );
 		
 			//JS
 			wp_enqueue_script( 'jquery-ui-sortable' );

@@ -74,7 +74,7 @@ $bean_shortcodes['button'] = array(
 		),
 		
 		'icon' => array(
-			'type' => 'select',
+			'type' => 'icon-select',
 			'label' => __('Button Icon', 'bean'),
 			'desc' => __('', 'bean'),
 			'options' => array(

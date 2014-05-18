@@ -136,6 +136,14 @@ jQuery(document).ready(function($) {
     			beans.loadVals();
     		});
 
+            $('ul.bean-form-icon-select li').click(function() {
+                $(this).parent().siblings("input.icon-select-input").val($(this).data('val'));
+                $(this).parent().find("li.selected").removeClass("selected");
+                $(this).addClass("selected");
+
+                beans.loadVals();
+            });
+
     		$('.bean-insert', form).click(function() {    		 			
     			if(window.tinyMCE)
 				{

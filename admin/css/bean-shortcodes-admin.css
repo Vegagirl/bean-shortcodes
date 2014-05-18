@@ -193,6 +193,64 @@ i.mce-i-bean_shortcodes_button, span.mce_bean_shortcodes_button {
 
 
 /*===================================================================*/
+/*	FONTAWESOME ICONS SELECT
+/*===================================================================*/
+
+ul.bean-form-icon-select {
+	font-size: 1.5rem;
+
+	border: 1px solid black;
+	overflow: scroll;
+
+	max-height: 200px;
+}
+
+ul.bean-form-icon-select li {
+	width: 2.425rem;
+	height: 2.425rem;
+	line-height: 2.425rem;
+	vertical-align: middle;
+	text-align: center;
+
+	position: relative;
+	display: block;
+	float: left;
+
+	border: 1px solid #eaeaea;
+
+	margin: -1px 0 0 -1px;
+	padding: 0;
+
+	background: white;
+
+	transition: box-shadow 0.1s;
+
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+ul.bean-form-icon-select li:hover {
+	box-shadow: 0px 0px 6px 4px rgba(0,0,0,0.15);
+	z-index: 2;
+}
+
+ul.bean-form-icon-select li:active, ul.bean-form-icon-select li.selected {
+	box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.15);
+	color: #2ea2cc;
+	z-index: 1;
+}
+
+ul.bean-form-icon-select li i {
+	font-family: FontAwesome;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: inherit;
+	-webkit-font-smoothing: antialiased;
+}
+
+/*===================================================================*/
 /*	INSERT SHORTCODE
 /*===================================================================*/
 .bean-insert {
