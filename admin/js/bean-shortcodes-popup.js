@@ -86,16 +86,14 @@ jQuery(document).ready(function($) {
 	                beanPopup = $('#bean-popup');
 	
 	            tbWindow.css({
-	                height: beanPopup.outerHeight() + 36,
+	                maxHeight: beanPopup.outerHeight() + 36,
 	                width: beanPopup.outerWidth(),
 	                marginLeft: -(beanPopup.outerWidth()/2)
 	            });
 	
 	           ajaxCont.css({
-	           	paddingTop: 0,
-	           	paddingLeft: 0,
-	           	paddingRight: 0,
-	           	height: (tbWindow.outerHeight()-15),
+	           	padding: 0,
+	           	height: (tbWindow.height() - 37),
 	           	overflow: 'auto', // IMPORTANT
 	           	width: beanPopup.outerWidth()
 	           });
