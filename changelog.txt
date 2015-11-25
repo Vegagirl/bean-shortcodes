@@ -1,3 +1,8 @@
+Aug 07 2015 - Version 2.2.1
+<ul>
+<li>Button href blank space fix</li>
+</ul>a
+
 Apr 24 2013 - Version 2.2
 <ul>
 <li>WP 3.9 TinyMCE editor fix</li>

@@ -3,7 +3,7 @@
  * Plugin Name: Bean Shortcodes
  * Plugin URI: http://themebeans.com/plugins/bean-shortcodes
  * Description: Enables shortcodes to be used in your WordPress theme.
- * Version: 2.2
+ * Version: 2.2.1
  * Author: ThemeBeans
  * Author URI: http://themebeans.com
  *

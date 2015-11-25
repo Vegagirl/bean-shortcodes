@@ -366,7 +366,7 @@ if (!function_exists('bean_button_sc')) {
 		if ($icon !="") { $icon_type = ( $icon ) ? '<i class="icon-'.$icon.'"></i>': '' ; }
 		else { $icon_type = ''; }
 		// BUTTON OUTPUT
-		$button = '<a href=" '.$url.' " class="bean-btn '.$color.' '.$size.' '.$type.' " '.$target.'> '.$icon_type.' '.do_shortcode($content).' </a>';
+		$button = '<a href="'.$url.'" class="bean-btn '.$color.' '.$size.' '.$type.' " '.$target.'> '.$icon_type.' '.do_shortcode($content).' </a>';
 
 	    return $button;
 	}
